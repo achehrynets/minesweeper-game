@@ -74,17 +74,17 @@ public class GameBoardFactory {
                 if (cells[row][column].isBomb()) {
                     continue;
                 }
-                int countMines = 0;
+                int countBombs = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
                         int r = row + i;
                         int c = column + j;
                         if (r >= 0 && r < rows && c >= 0 && c < columns && cells[r][c].isBomb()) {
-                            countMines++;
+                            countBombs++;
                         }
                     }
                 }
-                cells[row][column].setNumberOfBombsNearby(countMines);
+                cells[row][column].setNumberOfBombsNearby(countBombs);
             }
         }
     }
