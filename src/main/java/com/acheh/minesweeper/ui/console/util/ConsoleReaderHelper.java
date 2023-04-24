@@ -1,6 +1,9 @@
 package com.acheh.minesweeper.ui.console.util;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static java.lang.System.out;
 
@@ -9,10 +12,10 @@ import static java.lang.System.out;
  */
 public class ConsoleReaderHelper {
 
-    private final Scanner scanner;
+    private final BufferedReader input;
 
-    public ConsoleReaderHelper(Scanner scanner) {
-        this.scanner = scanner;
+    public ConsoleReaderHelper(InputStream in) {
+        this.input = new BufferedReader(new InputStreamReader(in));
     }
 
     /**
@@ -28,17 +31,14 @@ public class ConsoleReaderHelper {
         while (!validInput) {
             try {
                 out.println(message);
-                value = Integer.parseInt(scanner.next());
+                value = Integer.parseInt(input.readLine());
                 if (value >= min && value <= max) {
                     validInput = true;
                 } else {
                     out.println("Invalid input. Please enter a number between " + min + " and " + max + ".");
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IOException e) {
                 out.println("Invalid input. Please enter a number.");
-            } finally {
-                // consume the rest of the line
-                scanner.nextLine();
             }
         }
 
@@ -49,24 +49,27 @@ public class ConsoleReaderHelper {
      * Reads a string from the console.
      *
      * @param message the message to display to the user
-     * @param regex the regex pattern to match
+     * @param regex   the regex pattern to match
      * @return the string read from the console
      */
     public String readString(String message, String regex) {
-        String input = "";
+        String userInput = "";
         boolean validInput = false;
-
-        while (!validInput) {
-            out.println(message);
-            input = scanner.nextLine().trim();
-            if (!input.isEmpty() && input.matches(regex)) {
-                validInput = true;
-            } else {
-                out.println("Invalid input. Please enter a non-empty string that matches the pattern: " + regex);
+        try {
+            while (!validInput) {
+                out.println(message);
+                userInput = this.input.readLine();
+                if (!userInput.isEmpty() && userInput.matches(regex)) {
+                    validInput = true;
+                } else {
+                    out.println("Invalid input. Please enter a non-empty string that matches the pattern: " + regex);
+                }
             }
+        } catch (IOException e) {
+            out.println("Invalid input. Please enter a non-empty string that matches the pattern: " + regex);
         }
 
-        return input;
+        return userInput;
     }
 
 }

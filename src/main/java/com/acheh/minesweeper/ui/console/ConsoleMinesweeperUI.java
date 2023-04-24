@@ -10,7 +10,6 @@ import com.acheh.minesweeper.ui.action.Action;
 import com.acheh.minesweeper.ui.action.ActionType;
 import com.acheh.minesweeper.ui.console.util.ConsoleReaderHelper;
 
-import java.util.Scanner;
 import java.util.stream.IntStream;
 
 import static java.lang.System.out;
@@ -23,7 +22,7 @@ public class ConsoleMinesweeperUI implements MineSweeperUI {
     private final ConsoleReaderHelper consoleReaderHelper;
 
     public ConsoleMinesweeperUI() {
-        this.consoleReaderHelper = new ConsoleReaderHelper(new Scanner(System.in));
+        this.consoleReaderHelper = new ConsoleReaderHelper(System.in);
     }
 
     /**
