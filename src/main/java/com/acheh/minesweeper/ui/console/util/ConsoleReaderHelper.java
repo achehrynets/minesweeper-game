@@ -36,6 +36,9 @@ public class ConsoleReaderHelper {
                 }
             } catch (NumberFormatException e) {
                 out.println("Invalid input. Please enter a number.");
+            } finally {
+                // consume the rest of the line
+                scanner.nextLine();
             }
         }
 
