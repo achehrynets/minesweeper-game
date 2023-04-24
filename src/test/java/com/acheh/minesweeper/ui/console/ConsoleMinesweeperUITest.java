@@ -103,7 +103,7 @@ public class ConsoleMinesweeperUITest {
         // invoke the method and check the output
         ConsoleMinesweeperUI ui = new ConsoleMinesweeperUI();
         ui.showGameBoard(board);
-        String expectedOutput = "  0 1\n0 x x \n1 x x";
+        String expectedOutput = "  0 1\n0 □ □ \n1 □ □";
         Assert.assertTrue(getOutput().contains(expectedOutput));
     }
 
