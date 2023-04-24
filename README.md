@@ -21,6 +21,7 @@ To select a predefined game board, simply choose the corresponding option from t
 
 # Console Mode
 In console mode, the game is played entirely in the console. The player is presented with a grid of hidden squares, some of which contain mines. The player must uncover squares to reveal what is underneath them. If the player uncovers a mine, the game is over. The goal is to uncover all squares that do not contain mines.
+
 ![plot](./img/minesweeper-console-ui.png)
 
 To play the game in console mode, run the following command:
@@ -28,6 +29,7 @@ To play the game in console mode, run the following command:
 
 # GUI Mode
 In GUI mode, the game is played using a graphical user interface. The player can click on squares to uncover them, and right-click to flag squares that they believe contain mines. The player can also click on the smiley face icon to restart the game at any time.
+
 ![plot](./img/minesweeper-GUI.png)
 
 To play the game in GUI mode, run the following command:
